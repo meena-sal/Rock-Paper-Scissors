@@ -65,65 +65,116 @@ function game(){
     container1.style.justifyContent = 'space-evenly';
     container1.style.backgroundColor = "red";
     document.body.appendChild(container1);
+    const container3 = document.createElement("div");
+    const container4 = document.createElement("div");
     const container2 = document.createElement("div");
+    const yourScore = document.createElement("div");
+    const computerScore = document.createElement("div");
+    const gameResult = document.createElement("div");
     let roundResult = "pending";
+    document.body.appendChild(container3);
+    document.body.appendChild(container4);
     document.body.appendChild(container2);
+    document.body.appendChild(yourScore);
+    document.body.appendChild(computerScore);
+    document.body.appendChild(gameResult);
+    let computerDisplay = "Awaiting";
+    let humanDisplay = "Awaiting";
     container2.textContent = roundResult;
+    container3.textContent = computerDisplay;
+    container4.textContent = humanDisplay;
+    yourScore.textContent = "Your score: 0";
+    computerScore.textContent = "Computer score: 0";
+    gameResult.textContent = "Game in progress";
 
+    
 
-    btn1.addEventListener("click", () => {let outcome = playRound("rock", getComputerChoice());
+    function checkScore(){
+        if (computerWins == 5 || playerWins == 5){
+            if (computerWins == 5){
+                gameResult.textContent = "You lost the game!";
+            } else {
+                gameResult.textContent = "You won the game!";
+            }
+        }
+    };
+
+    
+    btn1.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let outcome = playRound("rock", computerChoice);
         outcome = outcome.slice(0, 5);
+        container3.textContent = `Computer chooses ${computerChoice}`;
+        container4.textContent = "You choose rock";
         if (outcome == "You w"){
             playerWins++;
             roundResult = "You win the round!"
             container2.textContent = roundResult;
+            yourScore.textContent = `Your score: ${playerWins}`;
+            checkScore();
         } else if (outcome == "You l"){
             computerWins++;
             roundResult = "You lose the round!"
             container2.textContent = roundResult;
+            computerScore.textContent = `Computer score: ${computerWins}`;
+            checkScore();
         } else {
             roundResult = "It's a draw!";
             container2.textContent = roundResult;
+            checkScore();
         }});
 
-    btn2.addEventListener("click", () => {let outcome = playRound("paper", getComputerChoice());
+    btn2.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let outcome = playRound("paper", computerChoice);
         outcome = outcome.slice(0, 5);
+        container3.textContent = `Computer chooses ${computerChoice}`;
+        container4.textContent = "You choose paper";
         if (outcome == "You w"){
             playerWins++;
             roundResult = "You win the round!"
             container2.textContent = roundResult;
+            yourScore.textContent = `Your score: ${playerWins}`;
+            checkScore();
         } else if (outcome == "You l"){
             computerWins++;
             roundResult = "You lose the round!"
             container2.textContent = roundResult;
+            computerScore.textContent = `Computer score: ${computerWins}`;
+            checkScore();
         } else {
             roundResult = "It's a draw!";
             container2.textContent = roundResult;
+            checkScore();
         }});
 
-    btn3.addEventListener("click", () => {let outcome = playRound("scissors", getComputerChoice());
+    btn3.addEventListener("click", () => {
+        let computerChoice = getComputerChoice();
+        let outcome = playRound("scissors", computerChoice);
         outcome = outcome.slice(0, 5);
+        container3.textContent = `Computer chooses ${computerChoice}`;
+        container4.textContent = "You choose scissors";
         if (outcome == "You w"){
             playerWins++;
             roundResult = "You win the round!"
             container2.textContent = roundResult;
+            yourScore.textContent = `Your score: ${playerWins}`;
+            checkScore();
         } else if (outcome == "You l"){
             computerWins++;
             roundResult = "You lose the round!"
             container2.textContent = roundResult;
+            computerScore.textContent = `Computer score: ${computerWins}`;
+            checkScore();
         } else {
             roundResult = "It's a draw!";
             container2.textContent = roundResult;
+            checkScore();
         }});
 
         
-    if (playerWins > computerWins){
-        console.log("You win the whole game!");
-    } else if (playerWins < computerWins){
-        console.log("You lose the whole game!")
-    } else {
-        console.log("The game is a draw!");
-    }
+        
+    
 }
 
 // Add a running score and text that gives outcome of round
