@@ -34,20 +34,6 @@ function playRound(playerSelection, computerSelection){
 function game(){
     let playerWins = 0;
     let computerWins = 0;
-    // for (let i = 0; i < 5; i++){
-    //     let playerInput = prompt("Rock, paper, or scissors?");
-        // let outcome = playRound(playerInput, getComputerChoice());
-        // outcome = outcome.slice(0, 5);
-        // if (outcome == "You w"){
-        //     playerWins++;
-        //     console.log("You win the round!");
-        // } else if (outcome == "You l"){
-        //     computerWins++;
-        //     console.log("You lose the round!");
-        // } else {
-        //     console.log("It's a draw!");
-        // }
-    // }
     const btn1 = document.createElement("button");
     const btn2 = document.createElement("button");
     const btn3 = document.createElement("button");
@@ -177,4 +163,3 @@ function game(){
     
 }
 
-// Add a running score and text that gives outcome of round
